@@ -79,8 +79,8 @@
                         <label>
                           Description:
                         </label>
-                        
-                      <textarea id="#textarea">Next, get a TinyMCE Cloud API key!</textarea>
+
+                      <textarea style="width: 100%" id="#textarea" rows="10"></textarea>
                       </span>
                     </div>
 
