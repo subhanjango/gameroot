@@ -65,28 +65,7 @@
                 <!--begin::Form-->
                 <form class="m-form" method="{{$Method}}" action="{{$Action}}">
                   {{csrf_field()}}
-                  <div class="m-portlet__body">
-                    <div class="m-form__section m-form__section--first">
-                      <div class="form-group m-form__group">
-                        <label>
-                          Title:
-                        </label>
-                        <input type="text" value="{{old('title')}}" name="title" class="form-control m-input" placeholder="Enter Question Title">
-                        <span class="m-form__help">
-                        </span>
-                      </div>
-                      <div class="form-group m-form__group">
-                        <label>
-                          Description:
-                        </label>
-
-                      <textarea style="width: 100%" id="#textarea" rows="10"></textarea>
-                      </span>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="m-portlet__foot m-portlet__foot--fit pull-right">
+                  <div class="m-portlet__foot m-portlet__foot--fit pull-right">
                   <div class="m-form__actions m-form__actions">
                     <button type="submit" class="btn btn-primary">
                       Submit
@@ -96,6 +75,38 @@
                     </button>
                   </div>
                 </div>
+                  <div class="m-portlet__body">
+                    <div class="m-form__section m-form__section--first">
+                      <div class="form-group m-form__group">
+                        <label>
+                          Title:
+                       
+                        <input type="text" value="{{old('title')}}" name="title" class="form-control m-input" placeholder="Enter Question Title">
+                         </label>
+                      <br>
+                        <label>
+                          Description:
+                        </label>
+
+                      <textarea style="width: 100%" id="#textarea" rows="5"></textarea>
+                      <div class="text-center">
+                      <label>Solution</label>
+                    </div>
+                      <div class="text-center">
+                      
+                      <textarea style="width: 50%" id="#textarea" rows="3"></textarea>
+                    </div>
+                    <div class="pull-left">
+                      <label>Yes</label>
+                    </div>
+                    <div class="pull-right">
+                      <label>No</label>
+                    </div>
+                    </div>
+
+                  </div>
+                </div>
+                
               </form>
               <!--end::Form-->
 
