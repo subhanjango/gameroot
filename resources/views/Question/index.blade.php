@@ -129,16 +129,16 @@ input:checked + .slider:before {
 
                                         <tr style="padding: 0px !important">
                                             <td>{{$Questions->question_title}}</td>
-                                            <td>{{$Questions->question_description}}</td>
+                                            <td>{!! htmlspecialchars_decode($Questions->question_description) !!}</td>
                                             <td>
                                                 @if($Questions->status)
                                                 <label class="switch">
-                                                    <input onchange="changestatus({{$Admins->id}})" checked type="checkbox">
+                                                    <input onchange="changestatus({{$Questions->id}})" checked type="checkbox">
                                                     <span class="slider round"></span>
                                                 </label></td>
                                                 @else
                                                 <label class="switch">
-                                                    <input onchange="changestatus({{$Admins->id}})"  type="checkbox">
+                                                    <input onchange="changestatus({{$Questions->id}})"  type="checkbox">
                                                     <span class="slider round"></span>
                                                 </label></td>
                                                 @endif

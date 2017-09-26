@@ -29,7 +29,22 @@ Route::get('Admin/Edit/{ID}', 'AdminController@edit');
 Route::post('Admin/Update', 'AdminController@update');
 Route::post('Admin/Status', 'AdminController@status');
 });
-
+//Categories
+Route::get('/Categories', 'CategoriesController@index');
+Route::get('Categories/Add', 'CategoriesController@add');
+Route::post('Categories/Insert', 'CategoriesController@__add');
+Route::get('Categories/Delete/{ID}', 'CategoriesController@delete');
+Route::get('Categories/Edit/{ID}', 'CategoriesController@edit');
+Route::post('Categories/Update', 'CategoriesController@update');
+Route::post('Categories/Status', 'CategoriesController@status');
+//Sub Categories
+Route::get('/SubCategories', 'SubCategoriesController@index');
+Route::get('SubCategories/Add', 'SubCategoriesController@add');
+Route::post('SubCategories/Insert', 'SubCategoriesController@__add');
+Route::get('SubCategories/Delete/{ID}', 'SubCategoriesController@delete');
+Route::get('SubCategories/Edit/{ID}', 'SubCategoriesController@edit');
+Route::post('SubCategories/Update', 'SubCategoriesController@update');
+Route::post('SubCategories/Status', 'SubCategoriesController@status');
 //Questions
 Route::get('/Questions', 'QuestionController@index');
 Route::get('Questions/Add', 'QuestionController@add');
