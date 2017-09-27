@@ -13,4 +13,10 @@ class Questions extends Model
     	public function solution(){
     		$this->hasMany('App\Solutions');
     	}
+
+    public function creator(){
+				return $this->belongsTo('App\Admin','created_by','id');
+		}
+
+
 }

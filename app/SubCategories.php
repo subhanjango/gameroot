@@ -11,6 +11,10 @@ class SubCategories extends Model
     ];
 
 		public function category(){
-				$this->belongsTo('App\Categories');
+				return $this->belongsTo('App\Categories');
+		}
+
+		public function creator(){
+				return $this->belongsTo('App\Admin','created_by','id');
 		}
 }

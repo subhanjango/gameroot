@@ -111,12 +111,14 @@ Add New Category</span> </span></a>
 <div class="m-portlet__body">
 <input type="hidden" id="status_url" value="{{$status_url}}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!--begin::Widget5-->
 <table id="datatable">
 <thead>
 <tr>
 <th>Title</th>
 <th>Status</th>
+<th>Created By</th>
 <th>Created At</th>
 <th>Updated At</th>
 <th>Action</th>
@@ -139,6 +141,7 @@ Add New Category</span> </span></a>
 <span class="slider round"></span>
 </label></td>
 @endif
+<td>{!! $Categories->creator->admin_email  !!}</td>
 <td>{{$Categories->created_at}}</td>
 <td>{{$Categories->updated_at}}</td>
 <td><a href="{{url($Module.'/Delete/'.$Categories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">

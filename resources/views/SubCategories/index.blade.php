@@ -112,12 +112,15 @@ Add New Sub Category</span> </span></a>
 <input type="hidden" id="status_url" value="{{$status_url}}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!--begin::Widget5-->
+
+
 <table id="datatable">
 <thead>
 <tr>
 <th>Title</th>
 <th>Status</th>
 <th>Category</th>
+<th>Created By</th>
 <th>Created At</th>
 <th>Updated At</th>
 <th>Action</th>
@@ -141,7 +144,8 @@ Add New Sub Category</span> </span></a>
 </label></td>
 @endif
 
-<td>{{$SubCategories->category_id}}</td>
+<td>{!! $SubCategories->category->title !!}</td>
+<td>{!! $SubCategories->creator->admin_email !!}</td>
 
 <td>{{$SubCategories->created_at}}</td>
 <td>{{$SubCategories->updated_at}}</td>

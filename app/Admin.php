@@ -15,6 +15,18 @@ class Admin extends Model{
         'admin_password'
     ];
 
+    public function categories(){
+      return $this->hasMany('App\Categories','created_by');
+    }
+
+     public function subcategories(){
+      return $this->hasMany('App\SubCategories','created_by');
+    }
+
+    public function questions(){
+      return $this->hasMany('App\Questions','created_by');
+    }
+
    public static function auth($credentials){
 
 
