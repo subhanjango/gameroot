@@ -1,12 +1,7 @@
-  @include('layouts.head')
-  <style type="text/css">
-  dl.decision-tree dd.collapsed {
-  display:none;
-  }
-  </style>
-  <!-- end::Head -->
-  <!-- end::Body -->
-  <body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+@include('layouts.head')
+<!-- end::Head -->
+<!-- end::Body -->
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
   <!-- begin:: Page -->
   <div class="m-grid m-grid--hor m-grid--root m-page">
     <!-- BEGIN: Header -->
@@ -70,7 +65,29 @@
                 <!--begin::Form-->
                 <form class="m-form" method="{{$Method}}" action="{{$Action}}">
                   {{csrf_field()}}
-                  <div class="m-portlet__foot m-portlet__foot--fit pull-right">
+                  <div class="m-portlet__body">
+                    <div class="m-form__section m-form__section--first">
+                      <div class="form-group m-form__group">
+                        <label>
+                          Title:
+                        </label>
+                        <input type="text" value="{{old('title')}}" name="title" class="form-control m-input" placeholder="Enter Title">
+                        <span class="m-form__help">
+                        </span>
+                        <label>
+                          Category:
+                        </label>
+                        <select name="category" class="form-control m-input">
+                          <option>Select Category</option>
+                          @foreach($categories as $categories)
+                          <option value="{{$categories->id}}">{{$categories->title}}</option>
+                          @endforeach
+                        </select>
+                        <span class="m-form__help">
+                        </span>
+                      </div>
+                 </div>
+                <div class="m-portlet__foot m-portlet__foot--fit pull-right">
                   <div class="m-form__actions m-form__actions">
                     <button type="submit" class="btn btn-primary">
                       Submit
@@ -80,38 +97,6 @@
                     </button>
                   </div>
                 </div>
-                  <div class="m-portlet__body">
-                    <div class="m-form__section m-form__section--first">
-                      <div class="form-group m-form__group">
-                        <label>
-                          Title:
-                       
-                        <input type="text" value="{{old('title')}}" name="title" class="form-control m-input" placeholder="Enter Question Title">
-                         </label>
-                      <br>
-                        <label>
-                          Description:
-                        </label>
-
-                      <textarea style="width: 100%" id="#textarea" rows="5"></textarea>
-                      <div class="text-center">
-                      <label>Solution</label>
-                    </div>
-                      <div class="text-center">
-                      
-                      <textarea style="width: 50%" id="#textarea" rows="3"></textarea>
-                    </div>
-                    <div class="pull-left">
-                      <label>Yes</label>
-                    </div>
-                    <div class="pull-right">
-                      <label>No</label>
-                    </div>
-                    </div>
-
-                  </div>
-                </div>
-                
               </form>
               <!--end::Form-->
 

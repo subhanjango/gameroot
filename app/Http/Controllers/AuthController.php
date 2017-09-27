@@ -19,10 +19,10 @@ class AuthController extends Controller
     }
 
     public function auth(Request $request){
-$validator = \Validator::make(
-    ['email' => 'required|string|email|max:255'],
-    ['password' => ['required|string|min:6|confirmed']]
-);
+        $validator = \Validator::make(
+            ['email' => 'required|string|email|max:255'],
+            ['password' => ['required|string|min:6|confirmed']]
+        );
     	
     	 if($validator->fails()){
     	 	return redirect()->back()->withErrors($validator->errors());
@@ -33,8 +33,15 @@ $validator = \Validator::make(
     	 	$Verification=Admin::auth($credentials);
     	 	
     	 	if($Verification != false){
-    	 		\Session::put('UserID', $Verification);
-    	 		return redirect('dashboard');
+                $getStatus=Admin::find($Verification);
+                if($getStatus->id == 1 || $getStatus->is_subadmin != 0){
+                  \Session::put('UserID', $Verification);  
+                  return redirect('dashboard');
+                }else{
+return back()->withErrors('Your account has been blocked , Contact Admin.');
+                }
+    	 		
+    	 		
     	 	}else{
     	 		return back()->withErrors('Invalid Credentials');
     	 	}

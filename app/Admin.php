@@ -24,7 +24,7 @@ class Admin extends Model{
    
   	$user = \DB::table('admins')
   	->where('admin_email', $email)
-  	->where('admin_password', $pass)
+    ->where('admin_password', $pass)
   	->first();
 
     if(is_null($user)){
