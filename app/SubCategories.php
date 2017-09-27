@@ -10,5 +10,7 @@ class SubCategories extends Model
         'title', 'status' , 'created_at' , 'updated_at' , 'category_id'
     ];
 
-
+		public function category(){
+				$this->belongsTo('App\Categories');
+		}
 }
