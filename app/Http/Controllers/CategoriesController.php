@@ -52,7 +52,7 @@ public function __add(Request $request){
         $Categories = new Categories;
         $Categories->title = trim(ucfirst($request->title));
         $Categories->status = 1;
-
+        $Categories->created_by = trim(\Session::get('UserID'));
         $Categories->save();
         \Session::flash('msg',$this->__Module.' Added.'); //<--FLASH MESSAGE
         return back();

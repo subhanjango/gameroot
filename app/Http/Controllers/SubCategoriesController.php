@@ -55,6 +55,7 @@ public function __add(Request $request){
         $SubCategories = new SubCategories;
         $SubCategories->title = trim(ucfirst($request->title));
         $SubCategories->category_id = trim($request->category);
+        $SubCategories->created_by = trim(\Session::get('UserID'));
         $SubCategories->status = 1;
 
         $SubCategories->save();

@@ -45,6 +45,14 @@ Route::get('SubCategories/Delete/{ID}', 'SubCategoriesController@delete');
 Route::get('SubCategories/Edit/{ID}', 'SubCategoriesController@edit');
 Route::post('SubCategories/Update', 'SubCategoriesController@update');
 Route::post('SubCategories/Status', 'SubCategoriesController@status');
+//User Management
+Route::get('/User', 'UserController@index');
+Route::get('User/Add', 'UserController@add');
+Route::post('User/Insert', 'UserController@__add');
+Route::get('User/Delete/{ID}', 'UserController@delete');
+Route::get('User/Edit/{ID}', 'UserController@edit');
+Route::post('User/Update', 'UserController@update');
+Route::post('User/Status', 'UserController@status');
 //Questions
 Route::get('/Questions', 'QuestionController@index');
 Route::get('Questions/Add', 'QuestionController@add');
