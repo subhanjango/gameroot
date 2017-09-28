@@ -28,7 +28,7 @@ public function index(){
     $__dataAssign['Module']=$this->__Module;
     $__dataAssign['Title']="Categories";
     $__dataAssign['status_url']="$this->__Module/Status";
-    $__dataAssign['Categories']=Categories::get();
+    $__dataAssign['Categories']=Categories::with('creator')->get();
     return view($this->__Directory.'/'.__FUNCTION__,$__dataAssign);
 }
 
@@ -51,6 +51,7 @@ public function __add(Request $request){
     else:
         $Categories = new Categories;
         $Categories->title = trim(ucfirst($request->title));
+        $Categories->created_by = trim(\Session::get('UserID'));
         $Categories->status = 1;
         $Categories->created_by = trim(\Session::get('UserID'));
         $Categories->save();

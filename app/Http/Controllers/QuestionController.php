@@ -30,7 +30,7 @@ public function index(){
     $__dataAssign['Module']=$this->__Module;
     $__dataAssign['Title']="Questions";
     $__dataAssign['status_url']="$this->__Module/Status";
-    $__dataAssign['Questions']=Questions::get();
+    $__dataAssign['Questions']=Questions::with('creator')->get();
     return view($this->__Directory.'/'.__FUNCTION__,$__dataAssign);
 }
 

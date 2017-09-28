@@ -1,4 +1,4 @@
-  @include('layouts.head')
+ @include('layouts.head')
   <style type="text/css">
   dl.decision-tree dd.collapsed {
   display:none;

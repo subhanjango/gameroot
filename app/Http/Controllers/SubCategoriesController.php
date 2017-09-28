@@ -28,8 +28,7 @@ public function index(){
     $__dataAssign['Module']=$this->__Module;
     $__dataAssign['Title']="Sub Categories";
     $__dataAssign['status_url']="$this->__Module/Status";
-    $__dataAssign['SubCategories']=SubCategories::get();
-    $__dataAssign['Categories']=Categories::get();
+    $__dataAssign['SubCategories']=SubCategories::with('category','creator')->get();
     return view($this->__Directory.'/'.__FUNCTION__,$__dataAssign);
 }
 
