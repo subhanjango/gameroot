@@ -60,6 +60,7 @@ public function __add(Request $request){
         $Questions->question_title = trim(ucfirst($request->title));
         $Questions->question_description = htmlspecialchars(trim($request->description));
         $Questions->subcategory_id = trim($request->subcategory);
+        $Questions->subcategory_id = htmlspecialchars(trim($request->solution));
         $Questions->created_by = trim(\Session::get('UserID'));
         $Questions->status = 1;
 

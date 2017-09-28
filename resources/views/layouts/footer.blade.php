@@ -30,7 +30,10 @@
     "stateSave": true
 } );
 
-    
+    $("#select2").select2({
+  allowClear:true,
+  placeholder: 'Users to add'
+});
 
 });
 	setTimeout(function(){

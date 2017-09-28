@@ -47,12 +47,20 @@ Route::post('SubCategories/Update', 'SubCategoriesController@update');
 Route::post('SubCategories/Status', 'SubCategoriesController@status');
 //User Management
 Route::get('/User', 'UserController@index');
-Route::get('User/Add', 'UserController@add');
-Route::post('User/Insert', 'UserController@__add');
-Route::get('User/Delete/{ID}', 'UserController@delete');
-Route::get('User/Edit/{ID}', 'UserController@edit');
-Route::post('User/Update', 'UserController@update');
-Route::post('User/Status', 'UserController@status');
+Route::get('Users/Add', 'UserController@add');
+Route::post('Users/Insert', 'UserController@__add');
+Route::get('Users/Delete/{ID}', 'UserController@delete');
+Route::get('Users/Edit/{ID}', 'UserController@edit');
+Route::post('Users/Update', 'UserController@update');
+Route::post('Users/Status', 'UserController@status');
+//User Groups
+Route::get('/UserGroups', 'UserGroupsController@index');
+Route::get('User-Groups/Add', 'UserGroupsController@add');
+Route::post('User-Groups/Insert', 'UserGroupsController@__add');
+Route::get('User-Groups/Delete/{ID}', 'UserGroupsController@delete');
+Route::get('User-Groups/Edit/{ID}', 'UserGroupsController@edit');
+Route::post('User-Groups/Update', 'UserGroupsController@update');
+Route::post('User-Groups/Status', 'UserGroupsController@status');
 //Questions
 Route::get('/Questions', 'QuestionController@index');
 Route::get('Questions/Add', 'QuestionController@add');

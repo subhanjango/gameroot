@@ -87,7 +87,7 @@ Dashboard
 											</a>
 										</li>
 										<li class="m-menu__item text-center" aria-haspopup="true">
-											<a href="{{url('/SubCategories')}}">
+											<a href="{{url('/UserGroups')}}">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>

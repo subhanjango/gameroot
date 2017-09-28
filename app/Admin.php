@@ -25,6 +25,10 @@ class Admin extends Model{
 
     public function questions(){
       return $this->hasMany('App\Questions','created_by');
+    } 
+
+    public function admins(){
+      return $this->hasMany('App\User','created_by');
     }
 
    public static function auth($credentials){
