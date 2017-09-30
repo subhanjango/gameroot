@@ -29,7 +29,24 @@ class User extends Model
         public static function myUsers(){
             return User::where('created_by',\Session::get('UserID'))->get();
         }
+ public static function auth($credentials){
 
+
+    $email=$credentials["email"];
+   
+    $pass=$credentials["password"];
+   
+    $user = \DB::table('users')
+    ->where('email', $email)
+    ->where('password', $pass)
+    ->first();
+
+    if(is_null($user)){
+        return false;
+        }else{
+        return $user->id;
+        }
+    }
 
 
     /**

@@ -112,6 +112,22 @@ Description:
 <textarea name="solution" style="width: 100%" id="#textarea" rows="3">{!! $Questions->solutions !!}</textarea>
 </div>
 
+<div class="text-center">
+<h3>Success Message</h3>
+</div>
+<div class="text-center">
+
+<textarea name="success" style="width: 100%" id="#textarea" rows="3">{!! $Questions->success !!}</textarea>
+</div>
+
+<div class="text-center">
+<h3>Unsuccess Message</h3>
+</div>
+<div class="text-center">
+
+<textarea name="unsuccess" style="width: 100%" id="#textarea" rows="3">{!! $Questions->unsuccess !!}</textarea>
+</div>
+
 
 </div>
 

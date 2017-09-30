@@ -96,6 +96,8 @@ Well done!
 </h3>
 
 </div>
+<a href="{{$Module}}/Add" class="btn btn-primary m-btn m-btn--icon pull-right"><span><i class="fa fa-plus"></i><span>
+Give Permission's</span> </span></a>
 
 </div>
 </div>
@@ -107,16 +109,18 @@ Well done!
 <!--begin:: Widgets/Top Products-->
 
 <div class="m-portlet__body">
-<!-- <?php //echo '<pre>'; print_r($UserGroups);die; ?> -->
+<!-- <?php //echo '<pre>'; print_r($SubCategories);die; ?> -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!--begin::Widget5-->
 <input type="hidden" id="getGroupURL" value="{{ $getGroups }}">
+<input type="hidden" id="getCategoryURL" value="{{ $getCategories }}">
 <table id="datatable" class="text-center">
 <thead class="text-center">
 <tr >
 <th  class="text-center">Group Title</th>
 <th  class="text-center">Members</th>
 <th  class="text-center">Permission On</th>
+<th  class="text-center">Action</th>
 </tr>
 </thead>
 <tbody>
@@ -125,7 +129,13 @@ Well done!
 <tr style="padding: 0px !important">
 <td>{{$UserGroups->group_title}}</td>
 <td onclick="getGroupMembers({{$UserGroups->id}})" class="text-center"><i class="fa fa-users " aria-hidden="true"></i></td>
-<td>123</td>
+<td onclick="getSubCategories({{$UserGroups->id}})" class="text-center"><i class="fa fa-question-circle" aria-hidden="true"></i> </td>
+<td><a href="{{url($Module.'/Delete/'.$UserGroups->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
+<i style="color:red" class="fa fa-archive"></i>
+</a>
+<a href="{{url($Module.'/Edit/'.$UserGroups->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
+<i style="color:orange" class="fa fa-pencil"></i>
+</a></td>
 </tr>
 @endforeach
 </tbody>
@@ -145,7 +155,7 @@ Well done!
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Group Members</h4>
+        <h4 class="modal-title" id="heading"></h4>
       </div>
       <div class="modal-body">
         <ul id="users"></ul>

@@ -37,8 +37,7 @@
 } );
 
     $("#select2").select2({
-  allowClear:true,
-  placeholder: 'Users to add'
+  allowClear:true
 });
 
 });
@@ -59,6 +58,30 @@
       for (var i = data.length - 1; i >= 0; i--) {
         $('#users').append('<li>'+data[i][0].email+'</li>');
       }
+      $('#heading').html('Group Members');
+      $('#myUsers').modal();
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("some error");
+    }
+});
+  } 
+
+   function getSubCategories(groupID){
+    url = $('#getCategoryURL').val();
+    dataItems = "";
+  $.ajax({
+    url : url,
+    type: "POST",
+  data : 'id='+groupID,
+    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+  dataType: 'json', // ** ensure you add this line **
+    success: function(data) {
+      /*console.log(data);*/
+      for (var i = data.length - 1; i >= 0; i--) {
+        $('#users').append('<li>'+data[i].title+'</li>');
+      }
+      $('#heading').html('Sub Categories');
       $('#myUsers').modal();
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {

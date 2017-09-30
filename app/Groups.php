@@ -22,4 +22,9 @@ class Groups extends Model
     {
 	return $this->hasMany('App\UserGroups','group_id','id');
 	}
+
+	 public function permissions()
+    {
+	return $this->hasMany('App\Permissions','group_id','id');
+	}
 }

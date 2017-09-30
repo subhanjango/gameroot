@@ -50,7 +50,9 @@ public function __add(Request $request){
         'subcategory' => 'required|string',
         'title' => 'required|unique:admins,admin_email|string',
         'description' => 'required|min:6',
-        'solution' => 'required|min:6'
+        'solution' => 'required|min:6',
+        'success' => 'required|min:6',
+        'unsuccess' => 'required|min:6'
     ]);
     if($validator->fails()):
         return redirect()->back()->withErrors($validator->errors());
@@ -61,6 +63,8 @@ public function __add(Request $request){
         $Questions->question_description = htmlspecialchars(trim($request->description));
         $Questions->subcategory_id = trim($request->subcategory);
         $Questions->solutions = htmlspecialchars(trim($request->solution));
+        $Questions->success = htmlspecialchars(trim($request->success));
+        $Questions->unsuccess = htmlspecialchars(trim($request->unsuccess));
         $Questions->created_by = trim(\Session::get('UserID'));
         $Questions->status = 1;
 
@@ -108,7 +112,9 @@ public function update(Request $request){
         'subcategory' => 'required|string',
         'title' => 'required|string',
         'description' => 'required|min:6',
-        'solution' => 'required|min:6'
+        'solution' => 'required|min:6',
+        'unsuccess' => 'required|min:6',
+        'success' => 'required|min:6'
     ]);
     if($validator->fails()):
         return redirect()->back()->withErrors($validator->errors());
@@ -119,6 +125,8 @@ public function update(Request $request){
         $Questions->question_description = htmlspecialchars(trim($request->description));
         $Questions->subcategory_id = trim($request->subcategory);
         $Questions->solutions = htmlspecialchars(trim($request->solution));
+        $Questions->unsuccess = htmlspecialchars(trim($request->unsuccess));
+        $Questions->success = htmlspecialchars(trim($request->success));
         $Questions->created_by = trim(\Session::get('UserID'));
 
         $Questions->update();

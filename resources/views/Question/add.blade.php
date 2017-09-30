@@ -102,13 +102,29 @@
   Description:
   </h3>
 
-  <textarea style="width: 100%" id="#textarea" name="description" rows="5">{{old('description')}}</textarea>
+  <textarea style="width: 100%" name="description" rows="5">{{old('description')}}</textarea>
   <div class="text-center">
   <h3>Solution</h3>
   </div>
   <div class="text-center">
 
   <textarea name="solution" style="width: 100%" id="#textarea" rows="3">{{old('Solution')}}</textarea>
+  </div>
+
+  <div class="text-center">
+  <h3>Success Message</h3>
+  </div>
+  <div class="text-center">
+
+  <textarea name="success" style="width: 100%" id="#textarea" rows="3">{{old('Solution')}}</textarea>
+  </div>
+
+  <div class="text-center">
+  <h3>Un-Success Message</h3>
+  </div>
+  <div class="text-center">
+
+  <textarea name="unsuccess" style="width: 100%" id="#textarea" rows="3">{{old('Solution')}}</textarea>
   </div>
 
 

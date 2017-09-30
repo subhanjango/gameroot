@@ -14,7 +14,7 @@ class Categories extends Model
 
 
  public function subcategories(){
- 	$this->hasMany('App\SubCategories');
+ 	return $this->hasMany('App\SubCategories','category_id');
  }
 
   public function creator(){

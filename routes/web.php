@@ -29,7 +29,6 @@ Route::get('Admin/Delete/{ID}', 'AdminController@delete');
 Route::get('Admin/Edit/{ID}', 'AdminController@edit');
 Route::post('Admin/Update', 'AdminController@update');
 Route::post('Admin/Status', 'AdminController@status');
-
 });
 //Categories
 Route::get('/Categories', 'CategoriesController@index');
@@ -57,8 +56,13 @@ Route::post('Users/Update', 'UserController@update');
 Route::post('Users/Status', 'UserController@status');
 //User Permissions
 Route::get('/UserPermissions', 'UserPermissionsController@index');
-Route::post('User-Permissions/Add', 'UserPermissionsController@__add');
+Route::get('/User-Permissions/Add', 'UserPermissionsController@add');
+Route::post('User-Permissions/Insert', 'UserPermissionsController@__add');
 Route::post('User-Permissions/getGroups', 'UserPermissionsController@getGroups');
+Route::post('User-Permissions/getPermissions', 'UserPermissionsController@getPermissions');
+Route::get('User-Permissions/Delete/{ID}', 'UserPermissionsController@delete');
+Route::get('User-Permissions/Edit/{ID}', 'UserPermissionsController@edit');
+Route::post('User-Permissions/Update', 'UserPermissionsController@update');
 //User Groups
 Route::get('/UserGroups', 'UserGroupsController@index');
 Route::get('User-Groups/Add', 'UserGroupsController@add');
@@ -80,4 +84,21 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//User Routes
 
+
+//User Auth
+Route::group(['middleware' => 'userauthenticated'], function () {
+Route::get('/Users' , 'UserAuthController@login');
+Route::post('Users/loguser' , 'UserAuthController@auth');
+
+});
+
+//If user logged in
+Route::group(['middleware' => 'userauth'], function () {
+
+Route::get('Users/dashboard', 'UserDashboardController@index');
+Route::any('Users/Users/search', 'UserDashboardController@search');
+
+
+});

@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'checkifNotlogged' => \App\Http\Middleware\ifLoggedIn::class,
         'checkifloggedIn' => \App\Http\Middleware\checkIfLoggedIn::class,
         'checkifmaster' => \App\Http\Middleware\NotMaster::class,
+        'userauth' => \App\Http\Middleware\UserAuth::class,
+        'userauthenticated' => \App\Http\Middleware\UserAuthenticated::class,
     ];
 }
