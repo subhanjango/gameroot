@@ -91,7 +91,7 @@ public function update(Request $request){
         $SubCategories->title = trim(ucfirst($request->input('title')));
         $SubCategories->category_id = trim($request->input('category'));
 
-        $SubCategories->save();
+        $SubCategories->update();
 
         \Session::flash('msg',$this->__Module.' Updated.');
         return back();

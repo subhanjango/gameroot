@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Groups extends Model
 {
+
+	public $timestamps = true;
+
    protected $fillable = [
         'group_title', 'status' , 'created_by'
     ];

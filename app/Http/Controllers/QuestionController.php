@@ -60,7 +60,7 @@ public function __add(Request $request){
         $Questions->question_title = trim(ucfirst($request->title));
         $Questions->question_description = htmlspecialchars(trim($request->description));
         $Questions->subcategory_id = trim($request->subcategory);
-        $Questions->subcategory_id = htmlspecialchars(trim($request->solution));
+        $Questions->solutions = htmlspecialchars(trim($request->solution));
         $Questions->created_by = trim(\Session::get('UserID'));
         $Questions->status = 1;
 
@@ -86,7 +86,7 @@ public function __add(Request $request){
 }
 
 public function delete($ID){
-Admin::destroy($ID);
+Questions::destroy($ID);
 \Session::flash('msg',$this->__Module.' Deleted.');
 return back();
 }
@@ -95,41 +95,64 @@ public function edit($ID){
     $__dataAssign['Action']=\URL::to($this->__Module.'/Update');
     $__dataAssign['Title']="Edit Admin";
     $__dataAssign['Method']="Post";
-    $__dataAssign['Admins']=Admin::find($ID);
+    $__dataAssign['Questions']=Questions::find($ID);
+    $__dataAssign['subcategories'] = SubCategories::where('status',1)->get();
+    $__dataAssign['Solutions']=Solutions::where('question_id',$ID)->get();
+
+
     return view($this->__Directory.'/'.__FUNCTION__,$__dataAssign);
 }
 
 public function update(Request $request){
-    $validator = \Validator::make($request->all(), [
-        'email' => 'required|email',
-        'password' => 'required',
-        'confirm_password' => 'required|min:6|same:password',
+      $validator = \Validator::make($request->all(), [
+        'subcategory' => 'required|string',
+        'title' => 'required|string',
+        'description' => 'required|min:6',
+        'solution' => 'required|min:6'
     ]);
-        if($validator->fails()):
+    if($validator->fails()):
         return redirect()->back()->withErrors($validator->errors());
-        else:
-        $user = Admin::find($request->input('edit_id'));
+    else:
+        //Insert Question + Solution
+        $Questions = Questions::find($request->input('edit_id'));
+        $Questions->question_title = trim(ucfirst($request->title));
+        $Questions->question_description = htmlspecialchars(trim($request->description));
+        $Questions->subcategory_id = trim($request->subcategory);
+        $Questions->solutions = htmlspecialchars(trim($request->solution));
+        $Questions->created_by = trim(\Session::get('UserID'));
 
-        $user->admin_email = trim($request->input('email'));
-        $user->admin_password = md5($request->input('password'));
+        $Questions->update();
+        $insertedId = $Questions->id;
+        //Deleting
+        Solutions::where('question_id', $request->input('edit_id'))->delete();
+        //Insert it's solutions
+       for ($i=0; $i < count($_POST['yes']) ; $i++) { 
+          $yes[] = [
+        'question_id' => $insertedId,
+        'yes' => htmlspecialchars(trim($_POST['yes'][$i])),
+        'no' => htmlspecialchars(trim($_POST['no'][$i]))
+            ];
+       }
 
-        $user->save();
-
-        \Session::flash('msg',$this->__Module.' Updated.');
+      Solutions::insert($yes);
+        
+        
+        
+        \Session::flash('msg',$this->__Module.' Updated.'); //<--FLASH MESSAGE
         return back();
         endif;
 }
 
 public function status(Request $request){
     
-    $Admin=Admin::find($request->input('id'));
+    $Questions=Questions::find($request->input('id'));
     
 
-    if($Admin->is_subadmin == 1){
-    $Admin->is_subadmin=0;
+    if($Questions->status == 1){
+    $Questions->status=0;
     }else{
-     $Admin->is_subadmin=1;   
+     $Questions->status=1;   
     }
-    $Admin->save();
+    $Questions->save();
 }
 }

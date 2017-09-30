@@ -24,7 +24,13 @@
 
 <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
 	$(document).ready(function(){
+     // codes works on all bootstrap modal windows in application
+    $('#myUsers').on('hidden.bs.modal', function(e)
+    { 
+        $('#users').html("");
+    }) ;
    $('#datatable').dataTable( {
   "ordering": false,
     "stateSave": true
@@ -39,6 +45,27 @@
 	setTimeout(function(){
     $('#error').toggle();
 }, 5000);
+
+  function getGroupMembers(groupID){
+    url = $('#getGroupURL').val();
+    dataItems = "";
+  $.ajax({
+    url : url,
+    type: "POST",
+  data : 'id='+groupID,
+    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+  dataType: 'json', // ** ensure you add this line **
+    success: function(data) {
+      for (var i = data.length - 1; i >= 0; i--) {
+        $('#users').append('<li>'+data[i][0].email+'</li>');
+      }
+      $('#myUsers').modal();
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("some error");
+    }
+});
+  }
 
 	function changestatus(id){
 	url = $('#status_url').val();

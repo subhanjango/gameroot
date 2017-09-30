@@ -88,7 +88,7 @@ public function update(Request $request){
 
         $user->email = trim($request->input('email'));
         $user->password = md5($request->input('password'));
-        $user->save();
+        $user->update();
 
         \Session::flash('msg',$this->__Module.' Updated.');
         return back();

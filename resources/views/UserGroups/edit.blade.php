@@ -87,10 +87,9 @@
                         <select name="users[]" multiple="true" id="select2" class="form-control ">
                           @if(!empty($Users))
                           
-                          @foreach($GroupMembers as $GroupMembers)
+                          
                           @foreach($Users as $myUsers)
-                          <option {{ $GroupMembers->users->id == $myUsers->id ? 'Selected' : "" }} value="{{$myUsers->id}}">{!!$myUsers->email!!}</option>
-                          @endforeach
+                           <option {{in_array($myUsers->id,$GroupMembers) ? 'selected' : "" }} value="{{$myUsers->id}}">{!!$myUsers->email!!}</option>
                           @endforeach
                           @endif
                         </select>

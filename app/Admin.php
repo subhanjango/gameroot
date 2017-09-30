@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model{
 
-  
+  public $timestamps = true;
     protected $fillable = [
         'admin_email', 'admin_password', 'is_subadmin',
     ];

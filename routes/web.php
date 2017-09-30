@@ -19,8 +19,9 @@ Route::post('/logme', 'AuthController@auth');
 Route::group(['middleware' => 'checkifNotlogged'], function () {
 Route::get('/dashboard', function(){return view('dashboard');});
 Route::get('/logout', function(){ Session::flush(); return redirect ('/'); });
-//Sub Admins
+
 Route::group(['middleware' => 'checkifmaster'], function () {
+//Sub Admins
 Route::get('/Admin', 'AdminController@index');
 Route::get('Admin/Add', 'AdminController@add');
 Route::post('Admin/Insert', 'AdminController@__add');
@@ -28,6 +29,7 @@ Route::get('Admin/Delete/{ID}', 'AdminController@delete');
 Route::get('Admin/Edit/{ID}', 'AdminController@edit');
 Route::post('Admin/Update', 'AdminController@update');
 Route::post('Admin/Status', 'AdminController@status');
+
 });
 //Categories
 Route::get('/Categories', 'CategoriesController@index');
@@ -53,6 +55,10 @@ Route::get('Users/Delete/{ID}', 'UserController@delete');
 Route::get('Users/Edit/{ID}', 'UserController@edit');
 Route::post('Users/Update', 'UserController@update');
 Route::post('Users/Status', 'UserController@status');
+//User Permissions
+Route::get('/UserPermissions', 'UserPermissionsController@index');
+Route::post('User-Permissions/Add', 'UserPermissionsController@__add');
+Route::post('User-Permissions/getGroups', 'UserPermissionsController@getGroups');
 //User Groups
 Route::get('/UserGroups', 'UserGroupsController@index');
 Route::get('User-Groups/Add', 'UserGroupsController@add');

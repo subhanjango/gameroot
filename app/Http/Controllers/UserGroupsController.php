@@ -84,6 +84,14 @@ public function edit($ID){
     $__dataAssign['Method']="Post";
     $__dataAssign['Groups']=Groups::where('id', $ID)->get();
     $__dataAssign['GroupMembers']=UserGroups::with('users')->get();
+    $usersSelected = array();
+    //User ID's which are already selected
+    foreach ($__dataAssign['GroupMembers'] as $value) {
+    	# code...
+    	$usersSelected[] = $value->users->id;
+    }
+  
+  	$__dataAssign['GroupMembers'] = $usersSelected;
     $__dataAssign['Users']=User::get();
     return view($this->__Directory.'/'.__FUNCTION__,$__dataAssign);
 }
@@ -100,7 +108,7 @@ public function update(Request $request){
 
         $Groups->group_title = trim(ucfirst($request->input('g_name')));
 
-        $Groups->save();
+        $Groups->update();
 
 		$Group = UserGroups::where('group_id',$request->input('edit_id'));
 		$Group->delete();
@@ -122,14 +130,14 @@ public function update(Request $request){
 
 public function status(Request $request){
     
-    $User=User::find($request->input('id'));
+    $Groups=Groups::find($request->input('id'));
     
 
-    if($User->status == 1){
-    $User->status=0;
+    if($Groups->status == 1){
+    $Groups->status=0;
     }else{
-     $User->status=1;   
+     $Groups->status=1;   
     }
-    $User->save();
+    $Groups->save();
 }
 }

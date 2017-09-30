@@ -33,7 +33,7 @@ public function index(){
 }
 
 public function add(){
-
+    
     $__dataAssign['Action']=\URL::to($this->__Module.'/Insert');
     $__dataAssign['Title']="Add ".$this->__Module;
     $__dataAssign['Method']="Post";
@@ -85,7 +85,7 @@ public function update(Request $request){
 
         $Categories->title = trim(ucfirst($request->input('title')));
 
-        $Categories->save();
+        $Categories->update();
 
         \Session::flash('msg',$this->__Module.' Updated.');
         return back();

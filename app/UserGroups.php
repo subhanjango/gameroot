@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserGroups extends Model
 {
+
+	public $timestamps = true;
+
+	
      protected $fillable = [
         'group_id', 'user_id' 
     ];

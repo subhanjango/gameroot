@@ -87,7 +87,7 @@ public function update(Request $request){
         $user->admin_email = trim($request->input('email'));
         $user->admin_password = md5($request->input('password'));
 
-        $user->save();
+        $user->update();
 
         \Session::flash('msg',$this->__Module.' Updated.');
         return back();
