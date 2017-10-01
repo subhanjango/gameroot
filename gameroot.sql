@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `admins`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `admin_email` varchar(45) DEFAULT NULL,
-  `admin_password` varchar(45) DEFAULT NULL,
+  `admin_email` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `admin_password` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `is_subadmin` smallint(11) DEFAULT '0',
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
-  `deleted_at` varchar(45) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `deleted_at` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,11 +55,11 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (2,'As',0,'2017-09-25 22:12:23','2017-09-25 22:22:17',1),(3,'Test243',1,'2017-09-25 22:16:53','2017-09-25 22:20:03',1);
+INSERT INTO `categories` VALUES (2,'As',1,'2017-09-25 22:12:23','2017-09-30 14:17:20',1),(3,'Test243',1,'2017-09-25 22:16:53','2017-09-25 22:20:03',1),(4,'Adasd',1,'2017-09-30 17:12:08','2017-09-30 17:12:08',1),(5,'Dasdasd',1,'2017-09-30 17:25:08','2017-09-30 17:25:08',1),(6,'??رحبا',1,'2017-09-30 17:29:30','2017-09-30 17:29:30',1),(7,'?????',1,'2017-09-30 17:30:00','2017-09-30 17:30:00',1),(8,'Hello testing \' s',1,'2017-09-30 17:30:20','2017-09-30 17:30:20',1),(9,'Adasdasdads1234',1,'2017-09-30 17:41:07','2017-09-30 17:41:07',1),(10,'?????',1,'2017-09-30 17:45:03','2017-09-30 17:45:03',1),(11,'?????',1,'2017-09-30 17:45:59','2017-09-30 17:45:59',1),(12,'?????',1,'2017-09-30 17:52:23','2017-09-30 17:52:23',1),(13,'مرحبا',1,'2017-09-30 17:58:55','2017-09-30 17:58:55',1),(14,'مرحبا مرحبا مرحبامرحبا مرحبا مرحبا مرحبا مرحب',1,'2017-09-30 18:06:07','2017-09-30 18:06:07',1);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,10 +84,10 @@ CREATE TABLE `groups` (
   `group_title` varchar(45) DEFAULT NULL,
   `status` smallint(3) DEFAULT NULL,
   `created_by` tinyint(3) DEFAULT NULL,
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'Asdasdasd123',1,1,'2017-09-28 21:02:52','2017-09-28 22:21:37');
+INSERT INTO `groups` VALUES (1,'Asdasdasd123',1,1,'2017-09-28 21:02:52','2017-09-30 00:59:55'),(2,'Asdasasd',1,1,'2017-09-30 13:18:56','2017-09-30 13:18:56');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,10 +109,10 @@ DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,6 +122,29 @@ CREATE TABLE `migrations` (
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permissions`
+--
+
+DROP TABLE IF EXISTS `permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permissions` (
+  `group_id` int(11) DEFAULT NULL,
+  `subcategory_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permissions`
+--
+
+LOCK TABLES `permissions` WRITE;
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+INSERT INTO `permissions` VALUES (2,1),(2,4),(1,1),(1,3),(1,4),(1,5);
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -138,11 +161,13 @@ CREATE TABLE `questions` (
   `subcategory_id` int(11) DEFAULT NULL,
   `status` smallint(5) DEFAULT NULL,
   `solutions` longtext,
-  `created_by` varchar(45) DEFAULT NULL,
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `success` longtext,
+  `unsuccess` longtext,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +176,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'Asdasd','&lt;p&gt;asdasdasd&lt;/p&gt;',1,1,NULL,'1','2017-09-28 18:56:12','2017-09-28 18:56:12');
+INSERT INTO `questions` VALUES (1,'Asdasd','&lt;p&gt;asdasdasd&lt;/p&gt;',1,1,'&lt;p&gt;adadasdasd&lt;/p&gt;','&lt;p&gt;asdasdasdasd&lt;/p&gt;','&lt;p&gt;adasdasdasd&lt;/p&gt;',1,'2017-09-28 18:56:12','2017-09-30 21:02:52'),(2,'Asdasda','&lt;p&gt;dasdasdasd&lt;/p&gt;',0,1,NULL,NULL,NULL,1,'2017-09-29 21:12:14','2017-09-29 21:12:14'),(3,'Asdasd','&lt;p&gt;dasdadasdas&lt;/p&gt;',1,1,'&lt;p&gt;asdadasddadas&lt;/p&gt;',NULL,NULL,1,'2017-09-29 21:18:04','2017-09-29 21:18:04');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,10 +192,10 @@ CREATE TABLE `solutions` (
   `question_id` int(11) DEFAULT NULL,
   `yes` longtext,
   `no` longtext,
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +204,7 @@ CREATE TABLE `solutions` (
 
 LOCK TABLES `solutions` WRITE;
 /*!40000 ALTER TABLE `solutions` DISABLE KEYS */;
-INSERT INTO `solutions` VALUES (1,1,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdas&lt;/p&gt;',NULL,NULL),(2,1,'&lt;p&gt;asdasdassd&lt;/p&gt;','&lt;p&gt;dsadasd&lt;/p&gt;',NULL,NULL),(3,1,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasdsdasdasdasd&lt;/p&gt;',NULL,NULL);
+INSERT INTO `solutions` VALUES (4,2,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(5,2,'&lt;p&gt;asdas&lt;/p&gt;','&lt;p&gt;assadasd&lt;/p&gt;',NULL,NULL),(6,2,'&lt;p&gt;asdasasd&lt;/p&gt;','&lt;p&gt;dasdadasd&lt;/p&gt;',NULL,NULL),(7,2,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(8,2,'&lt;p&gt;asdasdasd&lt;/p&gt;','&lt;p&gt;dasdadasdas&lt;/p&gt;',NULL,NULL),(20,3,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(21,3,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasd&lt;/p&gt;',NULL,NULL),(22,3,'&lt;p&gt;asdadasd&lt;/p&gt;','&lt;p&gt;dsadasdasdasd&lt;/p&gt;',NULL,NULL),(23,3,'&lt;p&gt;new&lt;/p&gt;','&lt;p&gt;new&lt;/p&gt;',NULL,NULL),(31,1,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdas&lt;/p&gt;',NULL,NULL),(32,1,'&lt;p&gt;asdasdassd&lt;/p&gt;','&lt;p&gt;dsadasd&lt;/p&gt;',NULL,NULL),(33,1,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasdsdasdasdasd&lt;/p&gt;',NULL,NULL),(34,1,'&lt;p&gt;hhshshshshshsh&amp;nbsp;&lt;img src=&quot;https://assets.logitech.com/assets/64877/8/z200-stereo-speakers.png&quot; width=&quot;463&quot; height=&quot;398&quot; /&gt;&lt;/p&gt;','',NULL,NULL);
 /*!40000 ALTER TABLE `solutions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,10 +221,10 @@ CREATE TABLE `sub_categories` (
   `status` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +233,7 @@ CREATE TABLE `sub_categories` (
 
 LOCK TABLES `sub_categories` WRITE;
 /*!40000 ALTER TABLE `sub_categories` DISABLE KEYS */;
-INSERT INTO `sub_categories` VALUES (1,'Saasdasdasd',1,3,1,'2017-09-26 20:04:57','2017-09-26 20:04:57'),(3,'Asdasdasdasdd',1,3,1,'2017-09-26 20:45:18','2017-09-26 20:45:18'),(4,'Dsaassa',1,3,1,'2017-09-26 22:01:37','2017-09-26 22:01:37');
+INSERT INTO `sub_categories` VALUES (1,'Saasdasdasd',1,3,1,'2017-09-26 20:04:57','2017-09-26 20:04:57'),(3,'Asdasdasdasdd',1,3,1,'2017-09-26 20:45:18','2017-09-26 20:45:18'),(4,'Dsaassa',1,3,1,'2017-09-26 22:01:37','2017-09-26 22:01:37'),(5,'Asdasdd',1,2,1,'2017-09-30 14:17:27','2017-09-30 14:17:27');
 /*!40000 ALTER TABLE `sub_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +247,7 @@ DROP TABLE IF EXISTS `user_groups`;
 CREATE TABLE `user_groups` (
   `group_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +256,7 @@ CREATE TABLE `user_groups` (
 
 LOCK TABLES `user_groups` WRITE;
 /*!40000 ALTER TABLE `user_groups` DISABLE KEYS */;
-INSERT INTO `user_groups` VALUES (1,4),(1,5);
+INSERT INTO `user_groups` VALUES (1,4),(1,5),(1,7),(2,4),(2,5);
 /*!40000 ALTER TABLE `user_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,11 +272,11 @@ CREATE TABLE `users` (
   `email` mediumtext,
   `password` mediumtext,
   `status` int(11) DEFAULT NULL,
-  `created_at` varchar(45) DEFAULT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   `created_by` smallint(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-29  4:07:16
+-- Dump completed on 2017-10-01  4:01:54

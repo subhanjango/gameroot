@@ -28,7 +28,8 @@
 });
 		function searchQuestion(str) {
 			// body...
-			if(str != "" || str != 'undefined'){
+			if($('#search-panel').val() != "" ){
+				console.log($('#search-panel').val());
 			$('#listingquestion').html("");
 	url = $('#searchURL').val();
 	$.ajax({
@@ -38,14 +39,23 @@
     headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
   dataType: 'json', // ** ensure you add this line **
     success: function(data) {
-    	$('#question_show').toggle();
+    	if(data.length > 0){
+    	$('#question_show').css('display','block');
+    	$('#error').css('display','none');
    for (var i = data.length - 1; i >= 0; i--) {
-        $('#listingquestion').append('<li><div class="row"><div style="background: #00ff43;" class="col-md-7 col-sm-8  col-xs-12"><h3><a  href="#"><p id="questiontitle">'+data[i].question_title+'</p></a></h3></div><div class="col-md-10 col-sm-10  col-xs-12"><p id="questiondescription"></p></div></div></li>');
+        $('#listingquestion').append('<li><div class="row"><div class="col-md-7 col-sm-8  col-xs-12"><h3><a  href="#"><b><p class="text-center" style="color: white;font-size: 22px;" id="questiontitle">'+data[i].question_title+'</p></b></a></h3></div><div class="col-md-10 col-sm-10  col-xs-12"><p id="questiondescription"></p></div></div></li>');
       }
       
-      
-    },
+      }else{
+      	$('#question_show').css('display','none');
+      	$('#error').css('display','block');
+      }
+    }, 
    
 });
+		}else{
+			$('#question_show').css('display','none');
+			$('#error').css('display','none');
+			$('#listingquestion').html('');
 		} }
 	</script>
