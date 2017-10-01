@@ -17,6 +17,10 @@ class SubCategories extends Model
 				return $this->belongsTo('App\Categories','category_id','id');
 		}
 
+		public function questions(){
+			return $this->hasMany('App\Questions','subcategory_id','id');
+		}
+
 		public function creator(){
 				return $this->belongsTo('App\Admin','created_by','id');
 		}

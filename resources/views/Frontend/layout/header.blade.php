@@ -37,7 +37,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<!-- logo -->
-				<a href="index.html" class="navbar-brand">
+				<a href="{{ url('/Users') }}" class="navbar-brand">
 					<img class="img-responsive" alt="" src="{{URL::to('frontend/images/logo.png')}}">
 				</a>
 				<!-- header end -->
@@ -51,7 +51,8 @@
 					<li class="dropdown"> <a class="dropdown-toggle " data-hover="dropdown" data-toggle="dropdown" data-animations="fadeInUp">{!! $allowedCategory->title !!}<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							@foreach($allowedCategory->subcategories as $subcategoriesTitle)
-							<li><a href="index.html">{!! $subcategoriesTitle->title !!}</a>
+							<?php  $Urlname = str_replace(' ' , '-' , $subcategoriesTitle->title) ?>
+							<li><a href="{{ url('Users/Question/').'/'.$Urlname }}">{!! $subcategoriesTitle->title !!}</a>
 							</li>
 							@endforeach
 						</ul>

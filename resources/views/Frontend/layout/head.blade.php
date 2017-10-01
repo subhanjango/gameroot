@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="author" content="ScriptsBundle">
-	<title>Knowledge Q&A Dashboard Template</title>
+	<title>{{ config('app.name') }}</title>
 	<!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
 	<link rel="icon" href="{{URL::to('frontend/images/favicon.ico')}}" type="image/x-icon" />
 	<!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->

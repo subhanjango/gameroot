@@ -98,7 +98,12 @@ Route::post('Users/loguser' , 'UserAuthController@auth');
 Route::group(['middleware' => 'userauth'], function () {
 
 Route::get('Users/dashboard', 'UserDashboardController@index');
-Route::any('Users/Users/search', 'UserDashboardController@search');
+Route::post('Users/Users/search', 'UserDashboardController@search');
+Route::get('Users/Question/{slug}', 'UserDashboardController@listing');
+Route::get('Users/Solve/{slug}', 'UserDashboardController@solve');
+Route::get('Users/Answer/{slug}/{id}/{question}', 'UserDashboardController@initial');
+Route::post('Users/Question/Final', 'UserDashboardController@finalresult');
+Route::get('Users/Answer/{slug}/{id}/{question}/{answerid}', 'UserDashboardController@initial');
 
 
 });

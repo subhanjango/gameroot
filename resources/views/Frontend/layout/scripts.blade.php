@@ -23,12 +23,18 @@
 	<!-- Template Core JS -->
 	<script src="{{URL::to('frontend/js/custom.js')}}"></script>
 	<script type="text/javascript">
+
+		<?php if(isset($listing)){ ?>
+			 $("html, body").delay(1000).animate({
+        scrollTop: $('#listme').offset().top 
+    }, 2000);
+		<?php } ?>
 		$("#non-submit").submit(function(e) {
     e.preventDefault(e);
 });
 		function searchQuestion(str) {
 			// body...
-			if($('#search-panel').val() != "" ){
+			if($.trim($('#search-panel').val()) != "" ){
 				console.log($('#search-panel').val());
 			$('#listingquestion').html("");
 	url = $('#searchURL').val();
