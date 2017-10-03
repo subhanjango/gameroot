@@ -144,7 +144,8 @@ Add New Sub Category</span> </span></a>
 </label></td>
 @endif
 
-<td>{!! $SubCategories->category->title !!}</td>
+<td>{{ !empty($SubCategories->category) ? $SubCategories->category->title : 'No Category' }}</td>
+
 <td>{!! $SubCategories->creator->admin_email !!}</td>
 
 <td>

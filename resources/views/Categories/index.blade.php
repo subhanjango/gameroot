@@ -145,7 +145,7 @@ Add New Category</span> </span></a>
 <td>{{$Categories->created_at}}
 </td>
 <td>
-	{{$Categories->created_at}}
+	{{$Categories->updated_at}}
 	
 
 </td>
