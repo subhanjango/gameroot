@@ -143,14 +143,19 @@ Add New Question</span> </span></a>
 </label></td>
 @endif
 <td>{{$Questions->creator->admin_email}}</td>
-<td>{{$Questions->created_at}}</td>
-<td>{{$Questions->updated_at}}</td>
-<td><a href="{{url($Module.'/Delete/'.$Questions->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
+<td>{{$Questions->created_at}}
+</td>
+<td>{{$Questions->updated_at}}
+</td>
+<td>@if(\Session::get('UserID') == $Questions->creator->id || \Session::get('UserID') == 1)
+	<a href="{{url($Module.'/Delete/'.$Questions->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:red" class="fa fa-archive"></i>
 </a>
 <a href="{{url($Module.'/Edit/'.$Questions->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:orange" class="fa fa-pencil"></i>
-</a></td>
+</a>
+@endif
+</td>
 </tr>
 @endforeach
 </tbody>

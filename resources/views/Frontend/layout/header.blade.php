@@ -15,10 +15,8 @@
 							</span>
 						</a>
 						<ul class="dropdown-menu ">
-							<li><a href="profile.html"><i class=" icon-bargraph"></i> Dashboard</a></li>
-							<li><a href="profile-setting.html"><i class=" icon-gears"></i> Profile Setting</a></li>
-							<li><a href="question-list.html"><i class="icon-heart"></i> Questions</a></li>
-							<li><a href="#"><i class="icon-lock"></i> Logout</a></li>
+						
+							<li><a href="{{ url('Users/logout')}}"><i class="icon-lock"></i> Logout</a></li>
 						</ul>
 					 </li>
 				</ul>
@@ -59,10 +57,7 @@
 					</li>
 					@endforeach
 					@endif
-					<li>
-						<div class="btn-nav"><a href="post-question.html" class="btn btn-primary btn-small navbar-btn">Post Question</a>
-						</div>
-					</li>
+				
 				</ul>
 			</div>
 			<!-- navigation menu end -->

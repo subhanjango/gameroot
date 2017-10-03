@@ -49,7 +49,10 @@
     	$('#question_show').css('display','block');
     	$('#error').css('display','none');
    for (var i = data.length - 1; i >= 0; i--) {
-        $('#listingquestion').append('<li><div class="row"><div class="col-md-7 col-sm-8  col-xs-12"><h3><a  href="#"><b><p class="text-center" style="color: white;font-size: 22px;" id="questiontitle">'+data[i].question_title+'</p></b></a></h3></div><div class="col-md-10 col-sm-10  col-xs-12"><p id="questiondescription"></p></div></div></li>');
+   	string = data[i].question_title;
+   	string = string.replace(' ','-');
+   	getUrl =  {!! json_encode(url('/')) !!};
+        $('#listingquestion').append('<li><div class="row"><div class="col-md-7 col-sm-8  col-xs-12"><h3><a  href="'+getUrl+'/Users/Solve/'+string+'"><b><p class="text-center" style="color: white;font-size: 22px;" id="questiontitle">'+data[i].question_title+'</p></b></a></h3></div><div class="col-md-10 col-sm-10  col-xs-12"><p id="questiondescription"></p></div></div></li>');
       }
       
       }else{

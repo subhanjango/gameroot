@@ -48,11 +48,11 @@
 	<!-- HEADER Navigation End -->
 	<!-- =-=-=-=-=-=-= HOME =-=-=-=-=-=-= -->
 
-	@foreach($question as $question)
+
 	<div class="full-section search-section">
 		<div class="search-area container">
-			<h3 class="search-title">{!! $question->question_title !!}</h3>
-			<h3 class="search-title">{!! html_entity_decode($question->question_description) !!}</h3>
+			<h3 class="search-title">{!! $question[0]->question_title !!}</h3>
+			<h3 class="search-title">{!! html_entity_decode($question[0]->question_description) !!}</h3>
 		
 		</div>
 	</div>
@@ -67,12 +67,12 @@
         <!-- title-section -->
         
         <div class="main-heading text-center">
-          {!! html_entity_decode($question->solutions) !!}
+          {!! html_entity_decode($question[0]->solutions) !!}
           <div class="slices"><span class="slice"></span><span class="slice"></span><span class="slice"></span>
           </div>
-         <?php $stringUrl = str_replace(' ', '-', $question->question_title); ?>
-          <a href="{{url('Users/Answer/Yes').'/'.$question->id.'/'.$stringUrl}}"><button class="yes-btn pull-left">Yes</button></a>
-          <a href="{{url('Users/Answer/Yes').'/'.$question->id.'/'.$stringUrl}}"><button href="{{url('Users/Answer/No').'/'.$question->id.'/'.$stringUrl}}" class="no-btn pull-right">No</button></a>
+         <?php $stringUrl = str_replace(' ', '-', $question[0]->question_title); ?>
+          <a href="{{url('Users/Answer/Yes').'/'.$question[0]->id.'/'.$stringUrl}}"><button class="yes-btn pull-left">Yes</button></a>
+          <a href="{{url('Users/Answer/Yes').'/'.$question[0]->id.'/'.$stringUrl}}"><button href="{{url('Users/Answer/No').'/'.$question[0]->id.'/'.$stringUrl}}" class="no-btn pull-right">No</button></a>
         
 		</div>
         <!-- End title-section -->
@@ -93,7 +93,7 @@
 	
         
 	</div>
-	@endforeach
+
 	<!-- =-=-=-=-=-=-= Main Area End =-=-=-=-=-=-= -->
 	
 	<!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->

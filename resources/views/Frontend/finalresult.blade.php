@@ -48,14 +48,7 @@
 	<!-- HEADER Navigation End -->
 	<!-- =-=-=-=-=-=-= HOME =-=-=-=-=-=-= -->
 
-	@foreach($question as $question)
-	<div class="full-section search-section">
-		<div class="search-area container">
-			<h3 class="search-title">{!! $question->question_title !!}</h3>
-			<h3 class="search-title">{!! html_entity_decode($question->question_description) !!}</h3>
-		
-		</div>
-	</div>
+
 	<!-- =-=-=-=-=-=-= HOME END =-=-=-=-=-=-= -->
 	<!-- =-=-=-=-=-=-= Main Area =-=-=-=-=-=-= -->
 
@@ -67,13 +60,20 @@
         <!-- title-section -->
         
         <div class="main-heading text-center">
-          {!! html_entity_decode($question->solutions) !!}
-          <div class="slices"><span class="slice"></span><span class="slice"></span><span class="slice"></span>
-          </div>
-         <?php $stringUrl = str_replace(' ', '-', $question->question_title); ?>
-          <a href="{{url('Users/Answer/Yes').'/'.$question->id.'/'.$stringUrl}}"><button class="yes-btn pull-left">Yes</button></a>
-          <a href="{{url('Users/Answer/Yes').'/'.$question->id.'/'.$stringUrl}}"><button href="{{url('Users/Answer/No').'/'.$question->id.'/'.$stringUrl}}" class="no-btn pull-right">No</button></a>
-        
+         @if($solved)
+
+         {!! html_entity_decode($final[0]->success) !!}
+        @else
+		{!! html_entity_decode($final[0]->unsuccess) !!}
+		@endif
+		<h1>Path You Followed: </h1>
+		<ul>
+		@if(!empty($showPath))
+		@for($i = 0; $i < count($showPath); $i++)
+		<li>{!! html_entity_decode($showPath[$i]) !!}</li>
+		@endfor
+		@endif
+		</ul>
 		</div>
         <!-- End title-section -->
 
@@ -93,7 +93,7 @@
 	
         
 	</div>
-	@endforeach
+
 	<!-- =-=-=-=-=-=-= Main Area End =-=-=-=-=-=-= -->
 	
 	<!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->

@@ -34,6 +34,7 @@ public function userKey(){
 	return  \Session::get('User');
 }
 public function index($listing = NULL){
+	\Session::forget('path');
 	if(!is_null($listing)){
 		$data["listing"]=$listing;
 	}
@@ -63,6 +64,7 @@ public function index($listing = NULL){
 	}
 
 	public function search(Request $request){
+		\Session::forget('path');
 		$UserGroups=UserGroups::where('user_id',$this->userKey())->get();
 		$myGroups = array();
 		foreach ($UserGroups as $value) {
@@ -85,6 +87,7 @@ public function index($listing = NULL){
 	}
 
 	public function listing($slug){
+		\Session::forget('path');
 		$slug = str_replace('-', ' ', $slug);
 		$UserGroups=UserGroups::where('user_id',$this->userKey())->get();
 		$myGroups = array();
@@ -133,7 +136,9 @@ public function index($listing = NULL){
 	public function initial($slug,$id,$question,$answerid=0){
 		
 		$slug = strtolower($slug);
+		
 		\Session::push('path', $slug);
+		
 		$question=str_replace('-', ' ', $question);
 	 			$data['Title']='';
 		//fetching User Groups
@@ -172,7 +177,23 @@ public function index($listing = NULL){
 					'solved' => $request->solved
 				];
 			}
-			Userpath::insert($path);
+		Userpath::insert($path);
+		$data['final'] = Questions::where('id',$request->qid)->get();
+		$data['solutions'] = Solutions::where('question_id',$request->qid)->get();
+		$showPath = array();
+		$i=0;
+		foreach ($data['solutions'] as $value) {
+			# code...
+			$option = $Path[$i];
+			
+			$showPath[]=$value->$option;
+			
+			$i++;
+		}
+
+		$data['showPath'] = $showPath;
+		$data['solved'] = $request->solved;
 		\Session::forget('path');
+		return view($this->__Directory.'/'.__FUNCTION__,$data);
 	}
 }

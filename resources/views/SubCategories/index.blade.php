@@ -147,14 +147,22 @@ Add New Sub Category</span> </span></a>
 <td>{!! $SubCategories->category->title !!}</td>
 <td>{!! $SubCategories->creator->admin_email !!}</td>
 
-<td>{{$SubCategories->created_at}}</td>
-<td>{{$SubCategories->updated_at}}</td>
-<td><a href="{{url($Module.'/Delete/'.$SubCategories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
+<td>
+	{{$SubCategories->created_at}}
+	
+</td>
+<td>
+	{{$SubCategories->updated_at}}
+
+</td>
+<td>@if(\Session::get('UserID') == $SubCategories->creator->id || \Session::get('UserID') == 1)
+	<a href="{{url($Module.'/Delete/'.$SubCategories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:red" class="fa fa-archive"></i>
 </a>
 <a href="{{url($Module.'/Edit/'.$SubCategories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:orange" class="fa fa-pencil"></i>
-</a></td>
+</a>
+@endif</td>
 </tr>
 @endforeach
 </tbody>

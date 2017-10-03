@@ -143,12 +143,15 @@ Add New User</span> </span></a>
 <td>{{$Users->creator->admin_email}}</td>
 <td>{{$Users->created_at}}</td>
 <td>{{$Users->updated_at}}</td>
-<td><a href="{{url($Module.'/Delete/'.$Users->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
+<td>
+	@if(\Session::get('UserID') == $Users->creator->id || \Session::get('UserID') == 1)
+	<a href="{{url($Module.'/Delete/'.$Users->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:red" class="fa fa-archive"></i>
 </a>
 <a href="{{url($Module.'/Edit/'.$Users->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:orange" class="fa fa-pencil"></i>
-</a></td>
+</a>
+@endif</td>
 </tr>
 @endforeach
 </tbody>

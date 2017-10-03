@@ -104,6 +104,6 @@ Route::get('Users/Solve/{slug}', 'UserDashboardController@solve');
 Route::get('Users/Answer/{slug}/{id}/{question}', 'UserDashboardController@initial');
 Route::post('Users/Question/Final', 'UserDashboardController@finalresult');
 Route::get('Users/Answer/{slug}/{id}/{question}/{answerid}', 'UserDashboardController@initial');
-
+Route::get('Users/logout', function(){ Session::flush(); return redirect ('/Users'); });
 
 });

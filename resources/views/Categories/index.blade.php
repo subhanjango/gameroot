@@ -142,14 +142,20 @@ Add New Category</span> </span></a>
 </label></td>
 @endif
 <td>{!! $Categories->creator->admin_email  !!}</td>
-<td>{{$Categories->created_at}}</td>
-<td>{{$Categories->updated_at}}</td>
-<td><a href="{{url($Module.'/Delete/'.$Categories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
+<td>{{$Categories->created_at}}
+</td>
+<td>
+	{{$Categories->created_at}}
+	
+
+</td>
+<td>@if(\Session::get('UserID') == $Categories->creator->id || \Session::get('UserID') == 1)
+	<a href="{{url($Module.'/Delete/'.$Categories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:red" class="fa fa-archive"></i>
 </a>
 <a href="{{url($Module.'/Edit/'.$Categories->id)}}" class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only">
 <i style="color:orange" class="fa fa-pencil"></i>
-</a></td>
+</a>@endif</td>
 </tr>
 @endforeach
 </tbody>
