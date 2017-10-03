@@ -167,7 +167,7 @@ CREATE TABLE `questions` (
   `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'Asdasd','&lt;p&gt;asdasdasd&lt;/p&gt;',1,1,'&lt;p&gt;adadasdasd&lt;/p&gt;','&lt;p&gt;asdasdasdasd&lt;/p&gt;','&lt;p&gt;adasdasdasd&lt;/p&gt;',1,'2017-09-28 18:56:12','2017-09-30 21:02:52'),(2,'Asdasda','&lt;p&gt;dasdasdasd&lt;/p&gt;',0,1,NULL,NULL,NULL,1,'2017-09-29 21:12:14','2017-09-29 21:12:14'),(3,'Asdasd','&lt;p&gt;dasdadasdas&lt;/p&gt;',1,1,'&lt;p&gt;asdadasddadas&lt;/p&gt;',NULL,NULL,1,'2017-09-29 21:18:04','2017-09-29 21:18:04');
+INSERT INTO `questions` VALUES (1,'Asdasd','&lt;p&gt;asdasdasd&lt;/p&gt;',1,1,'&lt;p&gt;adadasdasd&lt;/p&gt;','&lt;p&gt;asdasdasdasd&lt;/p&gt;','&lt;p&gt;adasdasdasd&lt;/p&gt;',1,'2017-09-28 18:56:12','2017-09-30 21:02:52'),(2,'Asdasda','&lt;p&gt;dasdasdasd&lt;/p&gt;',2,0,NULL,NULL,NULL,1,'2017-09-29 21:12:14','2017-09-29 21:12:14'),(3,'Asdasd','&lt;p&gt;dasdadasdas&lt;/p&gt;',3,1,'&lt;p&gt;asdadasddadas&lt;/p&gt;',NULL,NULL,1,'2017-09-29 21:18:04','2017-09-29 21:18:04'),(4,'Hello test','&lt;p&gt;asdad&lt;/p&gt;',1,1,'&lt;p&gt;dadad&lt;/p&gt;','&lt;p&gt;dad&lt;/p&gt;','&lt;p&gt;dad&lt;/p&gt;',1,'2017-10-01 13:42:09','2017-10-01 13:42:09');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +195,7 @@ CREATE TABLE `solutions` (
   `created_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   `updated_at` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +204,7 @@ CREATE TABLE `solutions` (
 
 LOCK TABLES `solutions` WRITE;
 /*!40000 ALTER TABLE `solutions` DISABLE KEYS */;
-INSERT INTO `solutions` VALUES (4,2,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(5,2,'&lt;p&gt;asdas&lt;/p&gt;','&lt;p&gt;assadasd&lt;/p&gt;',NULL,NULL),(6,2,'&lt;p&gt;asdasasd&lt;/p&gt;','&lt;p&gt;dasdadasd&lt;/p&gt;',NULL,NULL),(7,2,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(8,2,'&lt;p&gt;asdasdasd&lt;/p&gt;','&lt;p&gt;dasdadasdas&lt;/p&gt;',NULL,NULL),(20,3,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(21,3,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasd&lt;/p&gt;',NULL,NULL),(22,3,'&lt;p&gt;asdadasd&lt;/p&gt;','&lt;p&gt;dsadasdasdasd&lt;/p&gt;',NULL,NULL),(23,3,'&lt;p&gt;new&lt;/p&gt;','&lt;p&gt;new&lt;/p&gt;',NULL,NULL),(31,1,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdas&lt;/p&gt;',NULL,NULL),(32,1,'&lt;p&gt;asdasdassd&lt;/p&gt;','&lt;p&gt;dsadasd&lt;/p&gt;',NULL,NULL),(33,1,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasdsdasdasdasd&lt;/p&gt;',NULL,NULL),(34,1,'&lt;p&gt;hhshshshshshsh&amp;nbsp;&lt;img src=&quot;https://assets.logitech.com/assets/64877/8/z200-stereo-speakers.png&quot; width=&quot;463&quot; height=&quot;398&quot; /&gt;&lt;/p&gt;','',NULL,NULL);
+INSERT INTO `solutions` VALUES (4,2,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(5,2,'&lt;p&gt;asdas&lt;/p&gt;','&lt;p&gt;assadasd&lt;/p&gt;',NULL,NULL),(6,2,'&lt;p&gt;asdasasd&lt;/p&gt;','&lt;p&gt;dasdadasd&lt;/p&gt;',NULL,NULL),(7,2,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(8,2,'&lt;p&gt;asdasdasd&lt;/p&gt;','&lt;p&gt;dasdadasdas&lt;/p&gt;',NULL,NULL),(20,3,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdasd&lt;/p&gt;',NULL,NULL),(21,3,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasd&lt;/p&gt;',NULL,NULL),(22,3,'&lt;p&gt;asdadasd&lt;/p&gt;','&lt;p&gt;dsadasdasdasd&lt;/p&gt;',NULL,NULL),(23,3,'&lt;p&gt;new&lt;/p&gt;','&lt;p&gt;new&lt;/p&gt;',NULL,NULL),(31,1,'&lt;p&gt;dasdasd&lt;/p&gt;','&lt;p&gt;dasdasdas&lt;/p&gt;',NULL,NULL),(32,1,'&lt;p&gt;asdasdassd&lt;/p&gt;','&lt;p&gt;dsadasd&lt;/p&gt;',NULL,NULL),(33,1,'&lt;p&gt;asdasdas&lt;/p&gt;','&lt;p&gt;asdasdasdsdasdasdasd&lt;/p&gt;',NULL,NULL),(34,1,'&lt;p&gt;hhshshshshshsh&amp;nbsp;&lt;img src=&quot;https://assets.logitech.com/assets/64877/8/z200-stereo-speakers.png&quot; width=&quot;463&quot; height=&quot;398&quot; /&gt;&lt;/p&gt;','',NULL,NULL),(35,4,'&lt;p&gt;dad&lt;/p&gt;','&lt;p&gt;dadad&lt;/p&gt;',NULL,NULL);
 /*!40000 ALTER TABLE `solutions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,6 +261,30 @@ INSERT INTO `user_groups` VALUES (1,4),(1,5),(1,7),(2,4),(2,5);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_path`
+--
+
+DROP TABLE IF EXISTS `user_path`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_path` (
+  `question_id` int(11) NOT NULL,
+  `solved` int(11) NOT NULL,
+  `path` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_path`
+--
+
+LOCK TABLES `user_path` WRITE;
+/*!40000 ALTER TABLE `user_path` DISABLE KEYS */;
+INSERT INTO `user_path` VALUES (1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'no'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'no'),(1,1,'no'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'no'),(1,1,'yes'),(1,1,'no'),(1,1,'yes'),(4,1,'yes'),(4,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'no'),(1,1,'no'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'no'),(1,1,'yes'),(1,1,'31'),(1,1,'32'),(1,1,'33'),(1,1,'34'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(1,1,'yes'),(4,1,'yes'),(4,1,'yes'),(1,0,'yes'),(1,0,'no'),(1,0,'yes'),(1,0,'yes'),(1,0,'no');
+/*!40000 ALTER TABLE `user_path` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -298,4 +322,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-01  4:01:54
+-- Dump completed on 2017-10-04  0:25:19
